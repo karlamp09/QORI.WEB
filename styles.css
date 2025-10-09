@@ -71,6 +71,7 @@ body{
   overflow:hidden;text-align:center;
 }
 
+/* 🎥 Video sin filtros, se muestra natural */
 .bg-video {
   position: absolute;
   top: 0;
@@ -79,22 +80,12 @@ body{
   height: 100%;
   object-fit: cover;
   z-index: -2;
-
-  /* 💥 Aumenta luz, contraste y color */
-  filter: brightness(1.3) contrast(1.5) saturate(1.8);
+  filter: none; /* 🔥 sin alteraciones */
 }
 
-/* 🌟 Capa de brillo dorado suave */
+/* 🚫 Sin overlay ni oscurecimiento */
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(circle at center, rgba(212,175,55,0.25) 0%, rgba(0,0,0,0.4) 100%);
-  mix-blend-mode: soft-light;
-  pointer-events: none;
+  display: none;
 }
 
 .video-text{
