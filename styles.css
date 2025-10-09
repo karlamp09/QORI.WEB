@@ -4,7 +4,7 @@
    ============================ */
 
 :root{
-  --bg: #0c0c0c;
+  --bg: #000;
   --text: #f5f5f5;
   --muted: #a6a6a6;
   --gold: #d4af37;
@@ -30,14 +30,21 @@ body{
 /* ===== HEADER ===== */
 .site-header{
   position:fixed;top:0;width:100%;
-  background:rgba(12,12,12,0.6);
-  backdrop-filter:blur(8px);
+  background:transparent;   /* 🔥 sin color ni opacidad */
+  backdrop-filter:none;     /* 🔥 sin blur ni alteraciones */
   z-index:100;
   transition:all 0.3s ease;
 }
-.site-header.scrolled{background:rgba(0,0,0,0.85);box-shadow:0 4px 20px rgba(0,0,0,0.4)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-.brand{display:flex;align-items:center;text-decoration:none;color:var(--text);gap:10px}
+.site-header.scrolled{
+  background:rgba(0,0,0,0.85);
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;padding:16px 0;
+}
+.brand{
+  display:flex;align-items:center;text-decoration:none;color:var(--text);gap:10px;
+}
 .logo-mark{
   width:56px;height:56px;border-radius:50%;
   background:linear-gradient(135deg,var(--gold),#f2d27a);
@@ -71,23 +78,28 @@ body{
   overflow:hidden;text-align:center;
 }
 
-/* 🎥 Video sin filtros, se muestra natural */
+/* 🎥 Video sin filtros, sin overlay, se ve 100% real */
 .bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: none; /* 🔥 sin alteraciones */
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter:none !important;        /* 🔥 sin alteraciones */
+  mix-blend-mode:normal !important; /* evita mezcla de color */
+  opacity:1 !important;          /* asegura brillo completo */
+  background:none !important;
 }
 
-/* 🚫 Sin overlay ni oscurecimiento */
+/* 🚫 Sin overlay, sin capas oscuras */
 .overlay {
-  display: none;
+  display:none !important;
+  background:none !important;
 }
 
+/* Texto opcional */
 .video-text{
   z-index:10;color:var(--accent);
   text-shadow:0 0 20px rgba(0,0,0,0.6);
